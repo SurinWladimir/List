@@ -112,45 +112,52 @@ int main()
 			std::cout << "Move current element back- 4 \r\n";
 			std::cout << "Exit- 5 \r\n\r\n";
 			std::cin >> choose;
-			switch (choose)
-			{
-			case 1:
-				pCWord = List1.current_elem();
-				if (pCWord) {
-					std::cout << "Current element: " << pCWord->GetData() << "\r\n";
-				}
-				else
+			if (!std::cin.fail()) {
+				switch (choose)
 				{
-					std::cout << "Current element: Null" << "\r\n";
+				case 1:
+					pCWord = List1.current_elem();
+					if (pCWord) {
+						std::cout << "Current element: " << pCWord->GetData() << "\r\n";
+					}
+					else
+					{
+						std::cout << "Current element: Null" << "\r\n";
+					}
+					break;
+				case 2:
+					pCWord = List1.next_elem();
+					if (pCWord) {
+						std::cout << "Next element: " << pCWord->GetData() << "\r\n";
+					}
+					else
+					{
+						std::cout << "Next element: Null" << "\r\n";
+					}
+					break;
+				case 3:
+				{
+					std::string word;
+					std::cout << "Element to insert: ";
+					std::cin >> word;
+					List1.insert_elem(word);
+					List1.show();
 				}
 				break;
-			case 2:
-				pCWord = List1.next_elem();
-				if (pCWord) {
-					std::cout << "Next element: " << pCWord->GetData() << "\r\n";
+				case 4:
+					List1.move_back();
+					List1.show();
+					break;
+
+				default:
+					working = false;
+					break;
 				}
-				else
-				{
-					std::cout << "Next element: Null" << "\r\n";
-				}
-				break;
-			case 3:
-			{
-				std::string word;
-				std::cout << "Element to insert: ";
-				std::cin >> word;
-			    List1.insert_elem(word);
-				List1.show();
 			}
-				break;
-			case 4:
-				List1.move_back();
-				List1.show();
-				break;
-			
-			default:
+			else
+			{
+				std::cout << "wrong choice\r\n";
 				working = false;
-				break;
 			}
 		}
 #ifdef LIST_TO_FILE
@@ -174,56 +181,63 @@ int main()
 			std::cout << "Move current element back- 5 \r\n";
 			std::cout << "Exit- 6 \r\n\r\n";
 			std::cin >> choose;
-			switch (choose)
-			{
-			case 1:
-				pCWord = List2.current_elem();
-				if (pCWord) {
-					std::cout << "Current element: " << pCWord->GetData() << "\r\n";
-				}
-				else
+			if (!std::cin.fail()) {
+				switch (choose)
 				{
-					std::cout << "Current element: Null" << "\r\n";
-				}
-				break;
-			case 2:
-				pCWord = List2.next_elem();
-				if (pCWord) {
-					std::cout << "Next element: " << pCWord->GetData() << "\r\n";
-				}
-				else
+				case 1:
+					pCWord = List2.current_elem();
+					if (pCWord) {
+						std::cout << "Current element: " << pCWord->GetData() << "\r\n";
+					}
+					else
+					{
+						std::cout << "Current element: Null" << "\r\n";
+					}
+					break;
+				case 2:
+					pCWord = List2.next_elem();
+					if (pCWord) {
+						std::cout << "Next element: " << pCWord->GetData() << "\r\n";
+					}
+					else
+					{
+						std::cout << "Next element: Null" << "\r\n";
+					}
+					break;
+				case 3:
+					pCWord = List2.prev_elem();
+					if (pCWord) {
+						std::cout << "Prev element: " << pCWord->GetData() << "\r\n";
+					}
+					else
+					{
+						std::cout << "Prev element: Null" << "\r\n";
+					}
+					break;
+				case 4:
 				{
-					std::cout << "Next element: Null" << "\r\n";
+					std::string word;
+					std::cout << "Element to insert: ";
+					std::cin >> word;
+					List2.insert_elem(word);
+					std::cout << "\r\n";
+					List2.show();
 				}
 				break;
-			case 3:			
-				pCWord = List2.prev_elem();
-				if (pCWord) {
-					std::cout << "Prev element: " << pCWord->GetData() << "\r\n";
-				}
-				else
-				{
-					std::cout << "Prev element: Null" << "\r\n";
-				}
-				break;
-			case 4:
-			{
-				std::string word;
-				std::cout << "Element to insert: ";
-				std::cin >> word;
-				List2.insert_elem(word);
-				std::cout << "\r\n";
-				List2.show();
-			}
-			break;
-			case 5:
-				List2.move_back();
-				List2.show();
-				break;
+				case 5:
+					List2.move_back();
+					List2.show();
+					break;
 
-			default:
+				default:
+					working = false;
+					break;
+				}
+			}
+			else
+			{
+				std::cout << "wrong choice\r\n";
 				working = false;
-				break;	
 			}
 		}
 #ifdef LIST_TO_FILE
